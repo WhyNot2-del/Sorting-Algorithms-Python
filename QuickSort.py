@@ -13,8 +13,8 @@ class QuickSort:
         partitionIndex = begin - 1
         
         for x in range(begin, end):
-            if data[x] < pivot or data == pivot:
-                partitionIndex + 1
+            if data[x] < pivot or data[x] == pivot:
+                partitionIndex += 1
                 temp = data[partitionIndex]
                 data[partitionIndex] = data[x]
                 data[x] = temp
@@ -35,7 +35,6 @@ for x in range(50):
     print(data[x], end=" ")
 
 QuickSort.quickSort(data, 0, 49)
-
 
 print("\nSorted data")
 for x in range(50):
