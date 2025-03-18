@@ -1,41 +1,34 @@
 import random
 
-class QuickSort:
-    def quickSort(data, begin, end):
-        if begin < end:
-            partitionIndex = QuickSort.partition(data, begin, end)
+# quicksort algorithm for sorting items
+def quickSort(data, begin, end):
+    # base case for recursion, if there is only one or zero items being sorted
+    if begin < end:
+        # breaks down data into two smaller parts
+        partitionIndex =  partition(data, begin, end)
 
-            QuickSort.quickSort(data, begin, partitionIndex - 1)
-            QuickSort.quickSort(data, partitionIndex + 1, end)
+        # sorts the two broken down parts
+        quickSort(data, begin, partitionIndex - 1) # sorts smaller items
+        quickSort(data, partitionIndex + 1, end) # sorts bigger items
 
-    def partition(data, begin, end):
-        pivot = data[end]
-        partitionIndex = begin - 1
-        
-        for x in range(begin, end):
-            if data[x] < pivot or data[x] == pivot:
-                partitionIndex += 1
-                temp = data[partitionIndex]
-                data[partitionIndex] = data[x]
-                data[x] = temp
-        
-        temp = data[partitionIndex + 1]
-        data[partitionIndex + 1] = data[end]
-        data[end] = temp
+# breaks down the data into two smaller parts
+def partition(data, begin, end):
+    pivot = data[end]
+    partitionIndex = begin - 1
+    
+    # checks every value in current part
+    # if value is smaller or the same as pivot value, swap the two values and increase the partitionIndex
+    for x in range(begin, end):
+        if data[x] < pivot or data[x] == pivot:
+            partitionIndex += 1
+            temp = data[partitionIndex]
+            data[partitionIndex] = data[x]
+            data[x] = temp
+    
+    # after all values have been checked, swap pivot value to final position
+    temp = data[partitionIndex + 1]
+    data[partitionIndex + 1] = data[end]
+    data[end] = temp
 
-        return partitionIndex + 1
-
-data = [None] * 50
-
-for x in range(50):
-    data[x] = random.randint(1, 50)
-
-print("Unsorted data")
-for x in range(50):
-    print(data[x], end=" ")
-
-QuickSort.quickSort(data, 0, 49)
-
-print("\nSorted data")
-for x in range(50):
-    print(data[x], end=" ")
+    # return index of the final position of the pivot value
+    return partitionIndex + 1
