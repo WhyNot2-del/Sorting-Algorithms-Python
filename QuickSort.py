@@ -8,8 +8,8 @@ def quickSort(data, begin, end):
         partitionIndex =  partition(data, begin, end)
 
         # sorts the two broken down parts
-        quickSort(data, begin, partitionIndex - 1)
-        quickSort(data, partitionIndex + 1, end)
+        quickSort(data, begin, partitionIndex - 1) # sorts smaller items
+        quickSort(data, partitionIndex + 1, end) # sorts bigger items
 
 # breaks down the data into two smaller parts
 def partition(data, begin, end):
