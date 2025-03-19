@@ -4,14 +4,15 @@
 
 from typing import List
 from MergeSort import merge_sort
-from QuickSort import QuickSort
+from QuickSort import quickSort
+from SelectionSort import selection_sort
 
 # Function menu -> string
 # Shows our selection options, and prompts the user for a selection.
 def menu() -> str:
     print("m.) Merge Sort")
     print("q.) Quick Sort")
-    print("s.) Shell Sort")
+    print("s.) Selection Sort")
     print("x.) Exit")
     return input("Please make a selection> ").lower()
 
@@ -51,17 +52,22 @@ def do_merge_sort() -> None:
 def do_quick_sort() -> None:
     try:
         int_list = get_user_ints()
-        QuickSort.quickSort(int_list, 0, len(int_list)-1)
+        quickSort(int_list, 0, len(int_list)-1)
         print(int_list)
     except ValueError:
         pass
 
-# Function do_shell_sort -> None
+# Function do_selection_sort -> None
 # First we get a list of integers from the user.
-# Then we perform the shell sort on the list.
+# Then we perform the selection sort on the list.
 # Then we print out the changed list.
 def do_shell_sort() -> None:
-    print("Not implemented.")
+    try:
+        int_list = get_user_ints()
+        selection_sort(int_list)
+        print(int_list)
+    except ValueError:
+        pass
 
 # Function main -> None
 # Not technically our Entry point due to Python, but first and only if the script is directly executed.
