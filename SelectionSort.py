@@ -2,7 +2,7 @@
 def selection_sort(array):
     for i in range(0, len(array)):
         for j in range(0, len(array)):
-            if array[i] > array[j]:
+            if array[i] < array[j]:
                 tempCar = array[i]
                 array[i] = array[j]
                 array[j] = tempCar
